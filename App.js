@@ -1,8 +1,8 @@
 import React, { useState, useCallback, useEffect } from 'react';
-import { SafeAreaView, StyleSheet } from 'react-native';
+import { SafeAreaView } from 'react-native';
 import * as SplashScreen from 'expo-splash-screen';
 import * as Font from 'expo-font';
-import Home from './screens/Home';
+import Navigator from './routes/homeStack';
 
 export default function App() {
   const [appIsReady, setAppIsReady] = useState(false);
@@ -48,16 +48,10 @@ export default function App() {
 
   return (
     <SafeAreaView
-      style={styles.container}
+      flex={1}
       onLayout={onLayoutRootView}
     >
-      <Home onLayout={onLayoutRootView} />
+      <Navigator />
     </SafeAreaView>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1
-  }
-})
