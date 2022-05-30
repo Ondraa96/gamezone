@@ -1,5 +1,5 @@
 import React, { useState, useCallback, useEffect } from 'react';
-import { SafeAreaView } from 'react-native';
+import { SafeAreaView, StyleSheet } from 'react-native';
 import * as SplashScreen from 'expo-splash-screen';
 import * as Font from 'expo-font';
 import Home from './screens/Home';
@@ -47,8 +47,17 @@ export default function App() {
   }
 
   return (
-    <SafeAreaView onLayout={onLayoutRootView}>
-      <Home />
+    <SafeAreaView
+      style={styles.container}
+      onLayout={onLayoutRootView}
+    >
+      <Home onLayout={onLayoutRootView} />
     </SafeAreaView>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1
+  }
+})
