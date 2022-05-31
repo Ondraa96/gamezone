@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
-import { View, Text, FlatList, TouchableOpacity } from 'react-native';
+import { StyleSheet, View, Text, FlatList, TouchableOpacity, Modal, SafeAreaView } from 'react-native';
 import Card from '../shared/Card';
 import { globalStyles } from '../styles/global';
+import { MaterialIcons } from '@expo/vector-icons';
 
 export default function Home({ navigation }) {
+    const [modalOpen, setModalOpen] = useState(false);
+
     const [reviews, setReviews] = useState([
         { title: 'Moc krasny', body: 'popisek', rating: 5, id: 1 },
         { title: 'Slo to', body: 'popisek', rating: 3, id: 2 },
@@ -13,6 +16,26 @@ export default function Home({ navigation }) {
 
     return (
         <View style={globalStyles.container}>
+            <Modal animationType='slide' visible={modalOpen}>
+                <SafeAreaView style={styles.modalContent}>
+                    <TouchableOpacity onPress={() => setModalOpen(false)}>
+                        <MaterialIcons
+                            name='close'
+                            size={24}
+                            suppressHighlighting
+                            style={{ ...styles.modalToggle, ...styles.modalClose }}
+                        />
+                    </TouchableOpacity>
+                    <Text>Hello</Text>
+                </SafeAreaView>
+            </Modal>
+            <TouchableOpacity onPress={() => setModalOpen(true)}>
+                <MaterialIcons
+                    name='add'
+                    size={24}
+                    style={styles.modalToggle}
+                />
+            </TouchableOpacity>
             <FlatList
                 data={reviews}
                 renderItem={({ item }) => (
@@ -26,3 +49,21 @@ export default function Home({ navigation }) {
         </View>
     )
 }
+
+const styles = StyleSheet.create({
+    modalToggle: {
+        marginBottom: 10,
+        borderWidth: 1,
+        borderColor: 'lightgrey',
+        padding: 10,
+        borderRadius: 10,
+        alignSelf: 'center'
+    },
+    modalClose: {
+        marginTop: 20,
+        marginBottom: 0
+    },
+    modalContent: {
+        flex: 1
+    }
+})
