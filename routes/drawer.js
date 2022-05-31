@@ -1,5 +1,6 @@
 import 'react-native-gesture-handler';
 import React from 'react';
+import { HeaderBackground, StyleSheet, BlurView, ImageBackground } from 'react-native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { NavigationContainer, getFocusedRouteNameFromRoute } from '@react-navigation/native';
 import HomeStack from './homeStack';
@@ -31,6 +32,9 @@ function RootDrawerNavigator() {
                     height: 60
                 },
                 headerTintColor: '#444',
+                headerBackground: () => (
+                    <ImageBackground source={require('../assets/game_bg.png')} style={StyleSheet.absoluteFill} />
+                ),
             }}
         >
             <Drawer.Screen
@@ -39,7 +43,7 @@ function RootDrawerNavigator() {
                 options={({ route }) => ({
                     title: 'Home',
                     headerTitle: getHeaderTitle(route),
-                    headerShown: getHeaderTitle(route) === 'Review details' ? false : true
+                    headerShown: getHeaderTitle(route) === 'Review details' ? false : true,
                 })}
             />
             <Drawer.Screen

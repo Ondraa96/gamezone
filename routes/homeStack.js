@@ -1,4 +1,5 @@
 import React from 'react';
+import { Image } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
 import Home from '../screens/Home';
 import ReviewDetails from '../screens/ReviewDetails';
@@ -15,13 +16,16 @@ export default function HomeStack() {
                     backgroundColor: '#eee',
                     height: 60
                 },
-                headerTintColor: '#444'
+                headerTintColor: '#444',
             }}
         >
             <Stack.Screen
                 name='Home'
                 component={Home}
-                options={{ title: 'GameZone', headerShown: false }}
+                options={{
+                    title: 'GameZone',
+                    headerShown: false,
+                }}
             />
             <Stack.Screen
                 name='ReviewDetails'
