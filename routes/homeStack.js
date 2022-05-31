@@ -6,6 +6,8 @@ import ReviewDetails from '../screens/ReviewDetails';
 const Stack = createStackNavigator();
 
 export default function HomeStack() {
+
+
     return (
         <Stack.Navigator
             screenOptions={{
@@ -13,13 +15,13 @@ export default function HomeStack() {
                     backgroundColor: '#eee',
                     height: 60
                 },
-                headerTintColor: '#444',
+                headerTintColor: '#444'
             }}
         >
             <Stack.Screen
                 name='Home'
                 component={Home}
-                options={{ title: 'GameZone' }}
+                options={{ title: 'GameZone', headerShown: false }}
             />
             <Stack.Screen
                 name='ReviewDetails'
