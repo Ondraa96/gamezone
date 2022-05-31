@@ -24,22 +24,31 @@ function getHeaderTitle(route) {
 
 function RootDrawerNavigator() {
     return (
-        <Drawer.Navigator>
+        <Drawer.Navigator
+            screenOptions={{
+                headerStyle: {
+                    backgroundColor: '#eee',
+                    height: 60
+                },
+                headerTintColor: '#444',
+            }}
+        >
             <Drawer.Screen
                 name="HomeDrawer"
                 component={HomeStack}
                 options={({ route }) => ({
                     title: 'Home',
                     headerTitle: getHeaderTitle(route),
+                    headerShown: getHeaderTitle(route) === 'Review details' ? false : true
                 })}
             />
             <Drawer.Screen
                 name="AboutDrawer"
                 component={AboutStack}
-                options={({ route }) => ({
+                options={{
                     title: 'About',
-                    headerTitle: getHeaderTitle(route)
-                })}
+                    headerTitle: 'About GameZone'
+                }}
             />
         </Drawer.Navigator>
     );
