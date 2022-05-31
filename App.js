@@ -2,7 +2,7 @@ import React, { useState, useCallback, useEffect } from 'react';
 import { SafeAreaView } from 'react-native';
 import * as SplashScreen from 'expo-splash-screen';
 import * as Font from 'expo-font';
-import Navigator from './routes/homeStack';
+import { AppNavigator } from './routes/drawer';
 
 export default function App() {
   const [appIsReady, setAppIsReady] = useState(false);
@@ -51,7 +51,7 @@ export default function App() {
       flex={1}
       onLayout={onLayoutRootView}
     >
-      <Navigator />
+      <AppNavigator />
     </SafeAreaView>
   );
 }
